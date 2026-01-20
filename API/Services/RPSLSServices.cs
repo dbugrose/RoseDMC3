@@ -25,7 +25,7 @@ namespace API.Services
                           {result = "You won! Bazinga!";}
     else {result = "You lost! Better luck next time.";}
 
-            return "You entered... " + userinput.ToUpper() + "! Challenger chose... " + choices[selection] + "! " + result;
+            return "You entered... " + userinput.ToUpper() + "! Challenger chose... " + CPU + "! " + result;
             }
             else 
             {return "Please enter only either 'rock', 'paper', 'scissors', 'lizard', or 'spock'.";}
