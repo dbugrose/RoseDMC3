@@ -9,6 +9,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<RPSLSServices>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("RPSLS", policy =>
+    {
+        policy.WithOrigins("http://localhost:5500", "http://127.0.0.1:5500")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -19,6 +28,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("RPSLS");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
